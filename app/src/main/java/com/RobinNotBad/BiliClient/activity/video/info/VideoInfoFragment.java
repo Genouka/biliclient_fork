@@ -488,7 +488,18 @@ public class VideoInfoFragment extends Fragment {
                 }
             }
         });
-
+relay.setOnLongClickListener(new View.OnLongClickListener() {
+    @Override
+    public boolean onLongClick(View v) {
+    //这是一个傻逼写的代码请不要骂我qaq
+    //有话我们可以好好说(
+      ClipboardManager cm = (ClipboardManager) getSystemService (Context.CLIPBOARD_SERVICE);
+      ClipData mClipData = ClipData.newPlainText ("Label", "https://bilibili.com/video/"+videoInfo.bvid);
+      cm.setPrimaryClip (mClipData)
+   MsgUtil.showMsg("视频链接已复制到剪切板", requireContext());
+      return true;
+    }
+});
         relay.setOnClickListener((view1) -> {
             Intent intent = new Intent();
             intent.setClass(requireContext(), SendDynamicActivity.class).putExtra("video", videoInfo);
