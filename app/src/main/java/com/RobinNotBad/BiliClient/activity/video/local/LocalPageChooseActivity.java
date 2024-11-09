@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +29,8 @@ public class LocalPageChooseActivity extends BaseActivity {
 
     private int longClickPosition = -1;
     private boolean deleted = false;
+    private Handler handler = new Handler();
+    private Runnable runnable;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -79,6 +82,11 @@ public class LocalPageChooseActivity extends BaseActivity {
             } else {
                 longClickPosition = position;
                 MsgUtil.showMsg("再次长按删除", this);
+                handler.postDelayed(runnable = () -> {
+                    if (longClickPosition != -1) {
+                        longClickPosition = -1;
+                    }
+                }, 3000);
             }
         });
 
@@ -88,6 +96,9 @@ public class LocalPageChooseActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        if (handler != null && runnable != null) {
+            handler.removeCallbacks(runnable);
+        }
         InstanceActivity instance = BiliTerminal.getInstanceActivityOnTop();
         if (deleted && instance instanceof LocalListActivity && !instance.isDestroyed())
             ((LocalListActivity) (instance)).refresh();

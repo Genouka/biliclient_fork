@@ -2,6 +2,7 @@ package com.RobinNotBad.BiliClient.activity.video.local;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class LocalListActivity extends InstanceActivity {
     private TextView emptyTip;
 
     private int longClickPosition = -1;
+    private Handler handler = new Handler();
+    private Runnable runnable;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -71,6 +74,11 @@ public class LocalListActivity extends InstanceActivity {
                 } else {
                     longClickPosition = position;
                     MsgUtil.showMsg("再次长按删除", this);
+                    handler.postDelayed(runnable = () -> {
+                        if (longClickPosition != -1) {
+                            longClickPosition = -1;
+                        }
+                    }, 3000);
                 }
             });
             runOnUiThread(() -> {
