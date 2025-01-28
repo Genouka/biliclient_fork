@@ -1,12 +1,29 @@
 <div align="center">
 
-# 哔哩终端
+# 秋冥版哔哩终端
+
+**警告：这不是官方仓库，这是由GenOuka fork的哔哩终端第三方版本，以便于添加破坏性变更和新功能，这些功能不会被合并到官方仓库更改！**
 
 轻量的第三方B站Android客户端
 
-[官方 Gitee 仓库](https://gitee.com/RobinNotBad/BiliClient) | [Github 仓库 (由huanli233 fork)](https://github.com/huanli233/BiliClient) | [Action Build (Github)](https://github.com/huanli233/action_build_biliclient/actions)
+[如果你在寻找官方版本请前往：官方 Gitee 仓库](https://gitee.com/RobinNotBad/BiliClient)
 
 </div>
+
+# 非官方版本主要修改内容工作列表
+欢迎提交pr，GenOuka现在高三，没时间完成所有事项。先设立个roadmap供借鉴。
+
+* [ ] 修改应用包名、名称、图标，以方便用户与官方版本相区分
+* [ ] 适配圆屏手表
+* [ ] 更新用地址替换为本仓库地址
+* [ ] 使用更现代的json库Moshi进行json解析
+* [ ] 重构，强化拓展性
+* [ ] 添加RareBox安装方式
+* [ ] 添加Shizuku安装方式
+* [ ] 添加对凉腕播放器3.x的支持（在官方版本已废弃）
+* [ ] 添加对腕上视频的支持（方便已经购买的用户不要浪费钱）
+* [ ] 优化内置播放器
+* [ ] 使内置播放器支持被外部应用调用
 
 # 介绍
 这是一个**极其轻量级**的**B站客户端**，名字来源于原神中的“虚空终端”。使用 `java` + `xml`开发，最低支持**安卓4.2**。本项目借鉴了 [WearBili](https://github.com/SpaceXC/WearBili) 和 [腕上哔哩](https://github.com/luern0313/WristBilibili) 的部分开源代码和它们收集的部分 API ，界面曾使用 [WearBili](https://github.com/SpaceXC/WearBili) 的布局（现已重做）。**本项目与 WearBili 无任何关系**。
